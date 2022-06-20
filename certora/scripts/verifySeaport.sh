@@ -1,4 +1,4 @@
-certoraRun  certora/munged/Seaport.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
+certoraRun  reference/Seaport.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
     --verify Seaport:certora/spec/seaport.spec \
     --solc solc8.13 \
     --staging \
