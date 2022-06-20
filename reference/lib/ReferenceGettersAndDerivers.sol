@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import { ConsiderationItem, OfferItem, OrderParameters } from "../../contracts/lib/ConsiderationStructs.sol";
+import { ConsiderationItem, OfferItem, OrderParameters } from "contracts/lib/ConsiderationStructs.sol";
 
 import { ReferenceConsiderationBase } from "./ReferenceConsiderationBase.sol";
 
@@ -234,7 +234,7 @@ contract ReferenceGettersAndDerivers is ReferenceConsiderationBase {
      *
      * @return The name of this contract.
      */
-    function _name() internal pure returns (string memory) {
+    function _name() internal pure virtual returns (string memory) {
         // Return the name of the contract.
         return _NAME;
     }
