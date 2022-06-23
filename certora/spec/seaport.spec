@@ -45,28 +45,3 @@ rule whoChangedOrder(method f, address u) filtered { f -> f.selector == fulfillO
     assert totalSizeAfter == totalSizeBefore;
     assert counterBefore == counterAfter;
 }
-
-rule basicFRule(env e, method f) {
-
-    // declare variables / write requirements
-
-    calldataarg args;
-    f(e, args);
-
-    // declare variables / write requirements / more asserts to the God of asserts
-
-    assert false, "Remember, with great power comes great responsibility.";
-}
-
-ghost ghostName(uint256) returns uint256;
-
-ghost ghostName(uint256) returns uint256 {
-    init_state axiom forall uint256 a. ghostName(a) == 0;
-}   
-
-hook Sstore contactsMap[KEY uint256 defaultName] uint256 defaultValue
-    (uint256 old_defaultValue) STORAGE
-{
-    havoc ghostName assuming forall uint256 a. a == defaultName => ghostName@new(a) == ghostName@old(a) + defaultValue - old_defaultValue
-        && a == defaultName => ghostName@new(a) == ghostName@old(a)
-}
