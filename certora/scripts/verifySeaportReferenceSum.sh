@@ -1,4 +1,5 @@
 certoraRun  certora/mungedReference/Seaport.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
+    certora/mungedReference/lib/ReferenceAmountDeriver.sol \
     --verify Seaport:certora/spec/seaport.spec \
     --solc solc8.13 \
     --staging \
