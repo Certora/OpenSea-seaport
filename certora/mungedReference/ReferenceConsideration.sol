@@ -17,9 +17,7 @@ import {
     CriteriaResolver,
     Fulfillment,
     FulfillmentComponent,
-    Execution,
-    OfferItem,
-    ConsiderationItem
+    Execution
 } from "../../contracts/lib/ConsiderationStructs.sol";
 
 import { ReferenceOrderCombiner } from "./lib/ReferenceOrderCombiner.sol";
@@ -44,9 +42,6 @@ contract ReferenceConsideration is
     ConsiderationInterface,
     ReferenceOrderCombiner
 {
-
-    Order order_havoc;
-        
     /**
      * @notice Derive and set hashes, reference chainId, and associated domain
      *         separator during deployment.
@@ -120,8 +115,7 @@ contract ReferenceConsideration is
      *                   fulfilled.
      */
     function fulfillOrder(Order calldata order, bytes32 fulfillerConduitKey)
-    //    external
-        public
+        external
         payable
         override
         notEntered
@@ -136,20 +130,6 @@ contract ReferenceConsideration is
             fulfillerConduitKey,
             msg.sender
         );
-    }
-
-
-	//function fulfillOrder_fields(address offerer,address zone, uint8 itemTypeOferrer,address tokenOfferer,uint256 identifierOrCriteriaOffeer,uint256 startAmountOfferer,uint256 endAmountOfferer,uint8 itemType,address token,uint256 identifierOrCriteria,uint256 startAmount,uint256 endAmount,address payable recipient,uint8 orderType,uint256 startTime,uint256 endTime,bytes32 zoneHash,uint256 salt,bytes32 conduitKey,uint256 totalOriginalConsiderationItems,bytes calldata signature,bytes32 fulfillerConduitKey)
-	//function fulfillOrder_fields(address offerer,address zone, uint8 itemTypeOferrer,address tokenOfferer,uint8 itemType,address token,address payable recipient,bytes calldata signature,bytes32 fulfillerConduitKey)
-	function fulfillOrder_fields(bytes32 fulfillerConduitKey)
-        external
-        payable
-        notEntered
-        nonReentrant
-        returns (bool fulfilled)
-    {
-     
-        fulfilled = this.fulfillOrder(order_havoc, fulfillerConduitKey);
     }
 
     /**

@@ -30,7 +30,7 @@ rule sanity(method f)
 
 
 //rule sanity_fulfillAvailableAdvancedOrders(method f) filtered { f -> f.selector == fulfillAvailableAdvancedOrders(((address,address,(uint8,address,uint256,uint256,uint256)[],(uint8,address,uint256,uint256,uint256,address)[],uint8,uint256,uint256,bytes32,uint256,bytes32,uint256),uint120,uint120,bytes,bytes)[],(uint256,uint8,uint256,uint256,bytes32[])[],(uint256,uint256)[][],(uint256,uint256)[][],bytes32,address,uint256).selector }
-rule sanity_fulfillOrder_fields_method(method f) filtered { f -> f.selector == fulfillOrder_fields(bytes32).selector }
+rule sanity_fulfillOrder_fields_method(method f) filtered { f -> f.selector == fulfillOrder(bytes32).selector }
 {
 	env e;
 	calldataarg args;
@@ -41,18 +41,18 @@ rule sanity_fulfillOrder_fields_method(method f) filtered { f -> f.selector == f
 rule sanity_fulfillOrder(method f) filtered { f ->  f.selector == fulfillOrder(((address,address,(uint8,address,uint256,uint256,uint256)[],(uint8,address,uint256,uint256,uint256,address)[],uint8,uint256,uint256,bytes32,uint256,bytes32,uint256),bytes),bytes32).selector}
 {	env e;
 	calldataarg args;
-	fulfillOrder(e, args);
+	f(e, args);
 	assert false;
 }
 
 
 //rule sanity_name(method f) filtered { f -> f.selector == fulfillOrder(((address,address,(uint8,address,uint256,uint256,uint256)[],(uint8,address,uint256,uint256,uint256,address)[],uint8,uint256,uint256,bytes32,uint256,bytes32,uint256),bytes),bytes32).selector }
-rule sanity_fulfillOrder_fields(){
+rule sanity_fulfillOrder_harness(){
 	env e;
 	bytes32 fulfillerConduitKey1;
 	
 	
-	fulfillOrder_fields(e, fulfillerConduitKey1);
+	fulfillOrder(e, fulfillerConduitKey1);
 	
 	
 	assert false;

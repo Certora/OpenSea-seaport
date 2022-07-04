@@ -1,13 +1,17 @@
-certoraRun  certora/mungedReference/Seaport.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol  \
-    --verify Seaport:certora/spec/seaport_sanity.spec \
+certoraRun  certora/harness/SeaportHarness.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol  \
+    --verify SeaportHarness:certora/spec/seaport_sanity.spec \
     --solc solc8.13 \
-    --staging Shahar/windows_imports_issue\
+    --staging naftali/unroll_rewrite\
     --settings -verboseReachabilityChecks \
     --optimistic_loop \
-    --rule sanity_fulfillOrder_fields\
+    --rule sanity_fulfillOrder_harness\
     --send_only \
     --msg "Seaport check"
 
 
 #  --send_only \
 # --solc_args "['--optimize', '200']" \
+#  --staging Shahar/windows_imports_issue\
+# --staging naftali/unroll_rewrite\
+#   --typecheck_only\
+ 
