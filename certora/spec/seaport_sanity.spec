@@ -51,12 +51,15 @@ rule sanity_fulfillOrder_harness(){
 	env e;
 	bytes32 fulfillerConduitKey1;
 	
+	//fulfillerConduitKey1 = 0x00;
 	
 	fulfillOrder(e, fulfillerConduitKey1);
 	
 	
 	assert false;
 }
+
+
 // rule sanity_fulfillOrder() 
 // {
 // 	env e;
