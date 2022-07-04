@@ -58,6 +58,18 @@ rule sanity_fulfillOrder_harness(){
 	
 	assert false;
 }
+rule fulfillOrder_not_fulfilled(){
+	env e;
+	bytes32 fulfillerConduitKey1;
+	bool fulfilled = fulfillOrder(e, fulfillerConduitKey1);
+	assert fulfilled == false;
+}
+rule fulfillOrder_fulfilled(){
+	env e;
+	bytes32 fulfillerConduitKey1;
+	bool fulfilled = fulfillOrder(e, fulfillerConduitKey1);
+	assert fulfilled == true;
+}
 
 
 // rule sanity_fulfillOrder() 

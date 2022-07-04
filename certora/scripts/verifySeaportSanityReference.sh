@@ -4,7 +4,7 @@ certoraRun  certora/harness/SeaportHarness.sol certora/helpers/DummyERC20A.sol c
     --staging naftali/unroll_rewrite\
     --settings -verboseReachabilityChecks \
     --optimistic_loop \
-    --rule sanity_fulfillOrder_harness\
+    --rule fulfillOrder_fulfilled sanity_fulfillOrder_harness\
     --send_only \
     --msg "Seaport check"
 

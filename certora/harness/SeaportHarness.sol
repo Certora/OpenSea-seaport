@@ -26,7 +26,8 @@ contract SeaportHarness is Seaport {
 
     Order order_nondet;
     Order order_nondet2;
-    //OfferItem[] offerItems_nondet;
+    OfferItem offerItem_nondet1;
+    OfferItem offerItem_nondet2;
 
     constructor(address conduitController) Seaport(conduitController) {}
 
@@ -39,8 +40,8 @@ contract SeaportHarness is Seaport {
         //nonReentrant
         returns (bool fulfilled)
     {
-        OfferItem memory offerItem1;
-        order_nondet2.parameters.offer[0] = offerItem1;
+        //OfferItem memory offerItem1;
+        //order_nondet2.parameters.offer.push(offerItem_nondet2);
 
         // OfferItem memory offerItem0 = OfferItem({
         //     itemType:ItemType.ERC1155, 
@@ -82,8 +83,8 @@ contract SeaportHarness is Seaport {
     //     order_nondet.signature = "0";
     //     fulfillerConduitKey="0";
 
-        fulfilled = this.fulfillOrder(order_nondet, fulfillerConduitKey);
-       // fulfilled = this.fulfillOrder(order_nondet2, fulfillerConduitKey);
+        //fulfilled = this.fulfillOrder(order_nondet, fulfillerConduitKey);
+       fulfilled = this.fulfillOrder(order_nondet2, fulfillerConduitKey);
     }
 
 }
