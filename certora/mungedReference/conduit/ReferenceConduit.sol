@@ -25,9 +25,9 @@ import {
  *         instruct the conduit to transfer approved ERC20/721/1155 tokens.
  */
 contract ReferenceConduit is ConduitInterface, ReferenceTokenTransferrer {
-    address private immutable _controller;
+    address public _controller;                 // HARNESS: private -> public, removed immutable
 
-    mapping(address => bool) private _channels;
+    mapping(address => bool) public _channels;  // HARNESS: private -> public
 
     constructor() {
         _controller = msg.sender;

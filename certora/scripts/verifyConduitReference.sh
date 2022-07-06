@@ -4,4 +4,6 @@ certoraRun  certora/mungedReference/conduit/ReferenceConduit.sol certora/helpers
     --staging \
     --optimistic_loop \
     --send_only \
-    --msg "ReferenceConduit check"
+    --rule "$1" \
+    --rule_sanity advanced \
+    --msg "ReferenceConduit - $1"
