@@ -116,7 +116,8 @@ rule basicFRule(env e, method f) {
 
     uint256 balanceBefore = ERCa.balanceOf(e, randomUser);
 
-    execute(e, conduitTransferStructCreator(itemType, token, from, to, identifier, amount));
+    // execute(e, conduitTransferStructCreator(itemType, token, from, to, identifier, amount));
+    execute(e, itemType, token, from, to, identifier, amount);
 
     uint256 balanceAfter = ERCa.balanceOf(e, randomUser);
 

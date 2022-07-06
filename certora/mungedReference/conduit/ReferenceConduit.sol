@@ -48,8 +48,9 @@ contract ReferenceConduit is ConduitInterface, ReferenceTokenTransferrer {
      *                    performed successfully.
      */
     function execute(ConduitTransfer[] calldata transfers)
-        external
+        public                                                  // HARNESS: external -> public
         override
+        virtual
         returns (bytes4 magicValue)
     {
         if (!_channels[msg.sender]) {
