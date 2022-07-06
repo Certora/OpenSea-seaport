@@ -1,13 +1,18 @@
 import "erc20.spec"
 
+using DummyERC20A as ERCa
+using DummyERC20B as ERCb
+
 methods {
     // envfree methods
     _channels(address) returns(bool) envfree
     _controller() returns(address) envfree
+    conduitTransferStructCreator(uint8, address, address, address, uint256, uint256) returns((uint8,address,address,address,uint256,uint256)[]) envfree
 
 
     // non-envfree methods
     updateChannel(address, bool)
+    execute((uint8,address,address,address,uint256,uint256)[]) returns(bytes4)
 
 }
 
@@ -79,3 +84,44 @@ rule noStateChangeAfterExe(env e, method f) {
 
     assert f.selector != updateChannel(address, bool).selector => statusBefore == statusAfter, "Remember, with great power comes great responsibility.";
 }
+
+
+// STATUS - verified
+// no executions for closed channels. if all channels are closed, then there is no way to succeed any execution
+rule nowhereToRun(env e, method f) filtered {  
+                                f -> f.selector == execute((uint8,address,address,address,uint256,uint256)[]).selector 
+                                || f.selector == executeWithBatch1155((uint8,address,address,address,uint256,uint256)[],(address,address,address,uint256[],uint256[])[]).selector 
+                                || f.selector == executeBatch1155((address,address,address,uint256[],uint256[])[]).selector 
+} {
+    address channel; 
+    bool isOpen;
+
+    require forall address addr. _channels(addr) == false;
+
+    calldataarg args;
+    f@withrevert(e, args);
+
+    bool isReverted = lastReverted;
+
+    assert isReverted, "Remember, with great power comes great responsibility.";
+}
+
+
+// STATUS - in progress
+// trying to setup environment for executions
+rule basicFRule(env e, method f) {
+    uint8 itemType;
+    address token; address from; address to; address randomUser;
+    uint256 identifier; uint256 amount;
+
+    uint256 balanceBefore = ERCa.balanceOf(e, randomUser);
+
+    execute(e, conduitTransferStructCreator(itemType, token, from, to, identifier, amount));
+
+    uint256 balanceAfter = ERCa.balanceOf(e, randomUser);
+
+    assert balanceBefore == balanceAfter, "Remember, with great power comes great responsibility.";
+}
+
+
+

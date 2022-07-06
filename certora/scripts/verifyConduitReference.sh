@@ -1,9 +1,9 @@
-certoraRun  certora/mungedReference/conduit/ReferenceConduit.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
-    --verify ReferenceConduit:certora/spec/conduit.spec \
+certoraRun  certora/harness/ReferenceConduitHarness.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
+    --verify ReferenceConduitHarness:certora/spec/conduit.spec \
     --solc solc8.13 \
     --staging \
     --optimistic_loop \
     --send_only \
     --rule "$1" \
-    --rule_sanity advanced \
-    --msg "ReferenceConduit - $1"
+    --msg "ReferenceConduit - $1 with basic sanity" \
+    --rule_sanity basic 
