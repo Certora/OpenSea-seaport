@@ -15,6 +15,7 @@ contract ReferenceConduitHarness is ReferenceConduit {
         uint256 identifier, 
         uint256 amount
     ) public returns (ConduitTransfer[] memory transfers) {
+        transfers = new ConduitTransfer[](1);
         transfers[0] = ConduitTransfer(
             itemType,
             token,
