@@ -1,5 +1,5 @@
 certoraRun  certora/harness/ReferenceConduitHarness.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
-    --verify ReferenceConduitHarness:certora/spec/conduit.spec \
+    --verify ReferenceConduitHarness:certora/spec/refConduit.spec \
     --solc solc8.13 \
     --staging \
     --optimistic_loop \

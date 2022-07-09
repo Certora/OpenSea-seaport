@@ -12,7 +12,8 @@ methods {
 
     // non-envfree methods
     updateChannel(address, bool)
-    execute((uint8,address,address,address,uint256,uint256)[]) returns(bytes4)
+    // execute((uint8, address, address ,address ,uint256 ,uint256)[]) returns(bytes4)
+    execute(uint8, address ,address ,address ,uint256 ,uint256) returns(bytes4)
 
 }
 

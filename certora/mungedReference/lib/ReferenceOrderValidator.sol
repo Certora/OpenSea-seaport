@@ -54,7 +54,7 @@ contract ReferenceOrderValidator is
         bytes32 orderHash,
         address offerer,
         bytes memory signature
-    ) internal {
+    ) public {                                  // HARNESS to all functions: internal -> public
         // Retrieve the order status for the given order hash.
         OrderStatus storage orderStatus = _orderStatus[orderHash];
 
@@ -112,7 +112,7 @@ contract ReferenceOrderValidator is
         bool revertOnInvalid,
         bytes32[] memory priorOrderHashes
     )
-        internal
+        public
         returns (
             bytes32 orderHash,
             uint256 newNumerator,
@@ -274,7 +274,7 @@ contract ReferenceOrderValidator is
      * @return greatestCommonDivisor The greatest common divisor.
      */
     function _greatestCommonDivisor(uint256 a, uint256 b)
-        internal
+        public
         pure
         returns (uint256 greatestCommonDivisor)
     {
@@ -297,7 +297,7 @@ contract ReferenceOrderValidator is
      *         successfully cancelled.
      */
     function _cancel(OrderComponents[] calldata orders)
-        internal
+        public
         notEntered
         returns (bool)
     {
@@ -365,7 +365,7 @@ contract ReferenceOrderValidator is
      *         successfully validated.
      */
     function _validate(Order[] calldata orders)
-        internal
+        public
         notEntered
         returns (bool)
     {
@@ -438,7 +438,7 @@ contract ReferenceOrderValidator is
      *                     unfilled (i.e. the "denominator").
      */
     function _getOrderStatus(bytes32 orderHash)
-        internal
+        public
         view
         returns (
             bool isValidated,
@@ -470,7 +470,7 @@ contract ReferenceOrderValidator is
      *                     supports full fills.
      */
     function _doesNotSupportPartialFills(OrderType orderType)
-        internal
+        public
         pure
         returns (bool isFullOrder)
     {

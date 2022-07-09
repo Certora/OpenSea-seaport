@@ -47,7 +47,7 @@ contract ReferenceConduit is ConduitInterface, ReferenceTokenTransferrer {
      * @return magicValue A magic value indicating that the transfers were
      *                    performed successfully.
      */
-    function execute(ConduitTransfer[] calldata transfers)
+    function execute(ConduitTransfer[] memory transfers)        // HARNESS: calldata -> memory
         public                                                  // HARNESS: external -> public
         override
         virtual
@@ -166,13 +166,13 @@ contract ReferenceConduit is ConduitInterface, ReferenceTokenTransferrer {
      *
      * @param transfers The tokens to be transferred.
      */
-    function _performTransfers(ConduitTransfer[] calldata transfers) internal {
+    function _performTransfers(ConduitTransfer[] memory transfers) internal {
         uint256 totalStandardTransfers = transfers.length;
 
         // Iterate over each standard execution.
         for (uint256 i = 0; i < totalStandardTransfers; ++i) {
             // Retrieve the transfer in question.
-            ConduitTransfer calldata standardTransfer = transfers[i];
+            ConduitTransfer memory standardTransfer = transfers[i];
 
             // Perform the transfer.
             _transfer(standardTransfer);
@@ -187,7 +187,7 @@ contract ReferenceConduit is ConduitInterface, ReferenceTokenTransferrer {
      * @param item The ERC20/721/1155 item to transfer, including an amount and
      *             recipient.
      */
-    function _transfer(ConduitTransfer calldata item) internal {
+    function _transfer(ConduitTransfer memory item) internal {
         // Perform the transfer based on the item's type.
         if (item.itemType == ConduitItemType.ERC20) {
             // Transfer ERC20 token. Note that item.identifier is ignored and
