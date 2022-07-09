@@ -78,44 +78,31 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
         bytes32 conduitKey,
         uint256 counter
     ) public returns (OrderComponents[] memory orders) {
-        // OfferItem[] offer = new OfferItem[](1);
-        // offer[0] = OfferItem(
-        //     itemTypeOI,
-        //     tokenOI,
-        //     identifierOrCriteriaOI,
-        //     startAmountOI,
-        //     endAmountOI
-        // );
+        OfferItem[] memory offer = new OfferItem[](1);
+        offer[0] = OfferItem(
+            itemTypeOI,
+            tokenOI,
+            identifierOrCriteriaOI,
+            startAmountOI,
+            endAmountOI
+        );
 
-        // ConsiderationItem[] consideration = new ConsiderationItem[](1);
-        // consideration[0] = ConsiderationItem(
-        //     itemTypeCI,
-        //     tokenCI,
-        //     identifierOrCriteriaCI,
-        //     startAmountCI,
-        //     endAmountCI,
-        //     recipientCI
-        // );
+        ConsiderationItem[] memory consideration = new ConsiderationItem[](1);
+        consideration[0] = ConsiderationItem(
+            itemTypeCI,
+            tokenCI,
+            identifierOrCriteriaCI,
+            startAmountCI,
+            endAmountCI,
+            recipientCI
+        );
 
         orders = new OrderComponents[](1);
         orders[0] = OrderComponents(
             offerer,
             zone,
-            OfferItem(
-                itemTypeOI,
-                tokenOI,
-                identifierOrCriteriaOI,
-                startAmountOI,
-                endAmountOI
-            ),
-            ConsiderationItem(
-                itemTypeCI,
-                tokenCI,
-                identifierOrCriteriaCI,
-                startAmountCI,
-                endAmountCI,
-                recipientCI
-            ),
+            offer,
+            consideration,
             orderType,
             startTime,
             endTime,
