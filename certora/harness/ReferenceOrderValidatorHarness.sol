@@ -61,33 +61,34 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
 
         ItemType itemTypeOI,
         address tokenOI,
-        uint256 identifierOrCriteriaOI,
-        uint256 startAmountOI,
-        uint256 endAmountOI,
+        // uint256 identifierOrCriteriaOI,
+        // uint256 startAmountOI,
+        // uint256 endAmountOI,
 
         ItemType itemTypeCI,
         address tokenCI,
-        uint256 identifierOrCriteriaCI,
-        uint256 startAmountCI,
-        uint256 endAmountCI,
+        // uint256 identifierOrCriteriaCI,
+        // uint256 startAmountCI,
+        // uint256 endAmountCI,
         address payable recipientCI,
 
         OrderType orderType,
-        uint256 startTime,
-        uint256 endTime,
+        // uint256 startTime,
+        // uint256 endTime,
         bytes32 zoneHash,
-        uint256 salt,
+        // uint256 salt,
         bytes32 conduitKey,
-        uint256 counter
+        // uint256 counter,
+        uint256[] memory uints
     ) public returns (OrderComponents[] memory orders) {
         OfferItem[] memory offer = new OfferItem[](1);
         {
             offer[0] = OfferItem(
                 itemTypeOI,
                 tokenOI,
-                identifierOrCriteriaOI,
-                startAmountOI,
-                endAmountOI
+                uints[0],
+                uints[1],
+                uints[2]
             );
         }
 
@@ -96,9 +97,9 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
             consideration[0] = ConsiderationItem(
                 itemTypeCI,
                 tokenCI,
-                identifierOrCriteriaCI,
-                startAmountCI,
-                endAmountCI,
+                uints[3],
+                uints[4],
+                uints[5],
                 recipientCI
             );
         }
@@ -110,13 +111,51 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
             offer,
             consideration,
             orderType,
-            startTime,
-            endTime,
+            uints[6],
+            uints[7],
             zoneHash,
-            salt,
+            uints[8],
             conduitKey,
-            counter
+            uints[9]
         );
+
+        // OfferItem[] memory offer = new OfferItem[](1);
+        // {
+        //     offer[0] = OfferItem(
+        //         itemTypeOI,
+        //         tokenOI,
+        //         identifierOrCriteriaOI,
+        //         startAmountOI,
+        //         endAmountOI
+        //     );
+        // }
+
+        // ConsiderationItem[] memory consideration = new ConsiderationItem[](1);
+        // {
+        //     consideration[0] = ConsiderationItem(
+        //         itemTypeCI,
+        //         tokenCI,
+        //         identifierOrCriteriaCI,
+        //         startAmountCI,
+        //         endAmountCI,
+        //         recipientCI
+        //     );
+        // }
+
+        // orders = new OrderComponents[](1);
+        // orders[0] = OrderComponents(
+        //     offerer,
+        //     zone,
+        //     offer,
+        //     consideration,
+        //     orderType,
+        //     startTime,
+        //     endTime,
+        //     zoneHash,
+        //     salt,
+        //     conduitKey,
+        //     counter
+        // );
     }
 
 }

@@ -1,7 +1,5 @@
 import "erc20.spec"
 
-using ConsiderationStructs as ConsStruct
-
 methods {
     getOrderNum(bytes32) returns(uint256) envfree
     getOrderDenum(bytes32) returns(uint256) envfree
@@ -88,6 +86,19 @@ function callHelper(env e, method f) {
         uint256 salt;
         bytes32 conduitKey;
         uint256 counter;
+
+        uint256[] uints;
+        require uints[0] == identifierOrCriteriaOI;
+        require uints[1] == startAmountOI;
+        require uints[2] == endAmountOI;
+        require uints[3] == identifierOrCriteriaCI;
+        require uints[4] == startAmountCI;
+        require uints[5] == endAmountCI;
+        require uints[6] == startTime;
+        require uints[7] == endTime;
+        require uints[8] == salt;
+        require uints[9] == counter;
+
     /* if (f.selector == _validate(((address, address, (uint8, address, uint256, uint256, uint256)[],(uint8, address, uint256, uint256, uint256, address)[], uint8, uint256, uint256, bytes32, uint256, bytes32, uint256), bytes)[]).selector){
 
     }
@@ -99,24 +110,25 @@ function callHelper(env e, method f) {
 
             itemTypeOI,
             tokenOI,
-            identifierOrCriteriaOI,
-            startAmountOI,
-            endAmountOI,
+            // identifierOrCriteriaOI,
+            // startAmountOI,
+            // endAmountOI,
 
-            uitemTypeCI,
+            itemTypeCI,
             tokenCI,
-            identifierOrCriteriaCI,
-            startAmountCI,
-            endAmountCI,
+            // identifierOrCriteriaCI,
+            // startAmountCI,
+            // endAmountCI,
             recipientCI,
 
             orderType,
-            startTime,
-            endTime,
+            // startTime,
+            // endTime,
             zoneHash,
-            salt,
+            // salt,
             conduitKey,
-            counter
+            // counter
+            uints
         ));
     }
     else {
