@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import { OrderType, ItemType } from "contracts/lib/ConsiderationEnums.sol";
+import { OrderType, ItemType } from "../../mungedAssembly/lib/ConsiderationEnums.sol";
 
 // prettier-ignore
 import {
@@ -13,7 +13,7 @@ import {
     Order,
     AdvancedOrder,
     CriteriaResolver
-} from "contracts/lib/ConsiderationStructs.sol";
+} from "../../mungedAssembly/lib/ConsiderationStructs.sol";
 
 // prettier-ignore
 import { 
@@ -28,7 +28,7 @@ import { ReferenceCriteriaResolution } from "./ReferenceCriteriaResolution.sol";
 
 import { ReferenceAmountDeriver } from "./ReferenceAmountDeriver.sol";
 
-import "contracts/lib/ConsiderationConstants.sol";
+import "../../mungedAssembly/lib/ConsiderationConstants.sol";
 
 /**
  * @title OrderFulfiller

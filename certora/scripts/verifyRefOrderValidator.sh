@@ -1,5 +1,4 @@
 certoraRun  certora/harness/ReferenceOrderValidatorHarness.sol certora/helpers/DummyERC20A.sol certora/helpers/DummyERC20B.sol \
-    certora/mungedAssembly/lib/ConsiderationStructs.sol \
     --verify ReferenceOrderValidatorHarness:certora/spec/refOrderValidator.spec \
     --solc solc8.13 \
     --staging \

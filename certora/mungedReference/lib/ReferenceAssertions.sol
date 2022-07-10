@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import { OrderParameters } from "contracts/lib/ConsiderationStructs.sol";
+import { OrderParameters } from "../../mungedAssembly/lib/ConsiderationStructs.sol";
 
 import { ReferenceGettersAndDerivers } from "./ReferenceGettersAndDerivers.sol";
 
@@ -9,7 +9,7 @@ import { TokenTransferrerErrors } from "contracts/interfaces/TokenTransferrerErr
 
 import { ReferenceCounterManager } from "./ReferenceCounterManager.sol";
 
-import "contracts/lib/ConsiderationConstants.sol";
+import "../../mungedAssembly/lib/ConsiderationConstants.sol";
 
 /**
  * @title Assertions

@@ -5,9 +5,9 @@ pragma solidity ^0.8.7;
 import {
     OrderType,
     ItemType
-} from "contracts/lib/ConsiderationEnums.sol";
+} from "../../mungedAssembly/lib/ConsiderationEnums.sol";
 
-import { SpentItem, ReceivedItem } from "contracts/lib/ConsiderationStructs.sol";
+import { SpentItem, ReceivedItem } from "../../mungedAssembly/lib/ConsiderationStructs.sol";
 
 import { ConduitTransfer } from "contracts/conduit/lib/ConduitStructs.sol";
 

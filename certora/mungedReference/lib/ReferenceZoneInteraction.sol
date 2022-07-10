@@ -1,19 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import { ZoneInterface } from "contracts/interfaces/ZoneInterface.sol";
+import { ZoneInterface } from "../../mungedAssembly/interfaces/ZoneInterface.sol";
 
-import { OrderType } from "contracts/lib/ConsiderationEnums.sol";
+import { OrderType } from "../../mungedAssembly/lib/ConsiderationEnums.sol";
 
 // prettier-ignore
-import { AdvancedOrder, CriteriaResolver } from "contracts/lib/ConsiderationStructs.sol";
+import { AdvancedOrder, CriteriaResolver } from "../../mungedAssembly/lib/ConsiderationStructs.sol";
 
-import "contracts/lib/ConsiderationConstants.sol";
+import "../../mungedAssembly/lib/ConsiderationConstants.sol";
 
 // prettier-ignore
 import {
     ZoneInteractionErrors
-} from "contracts/interfaces/ZoneInteractionErrors.sol";
+} from "../../mungedAssembly/interfaces/ZoneInteractionErrors.sol";
 
 /**
  * @title ZoneInteraction

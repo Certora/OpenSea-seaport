@@ -4,7 +4,9 @@ pragma solidity ^0.8.7;
 import "../mungedReference/lib/ReferenceOrderValidator.sol";
 
 import { ItemType } from "../mungedAssembly/lib/ConsiderationEnums.sol";
-import { OfferItem, ConsiderationItem } from "certora/mungedAssembly/lib/ConsiderationStructs.sol";
+import { OfferItem, ConsiderationItem } from "../mungedAssembly/lib/ConsiderationStructs.sol";
+// import { ItemType } from "../../contracts/lib/ConsiderationEnums.sol";
+// import { OfferItem, ConsiderationItem } from "../../contracts/lib/ConsiderationStructs.sol";
 
 contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
 
@@ -68,7 +70,7 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
         uint256 identifierOrCriteriaCI,
         uint256 startAmountCI,
         uint256 endAmountCI,
-        address recipientCI,
+        address payable recipientCI,
 
         OrderType orderType,
         uint256 startTime,
@@ -79,23 +81,27 @@ contract ReferenceOrderValidatorHarness is ReferenceOrderValidator {
         uint256 counter
     ) public returns (OrderComponents[] memory orders) {
         OfferItem[] memory offer = new OfferItem[](1);
-        offer[0] = OfferItem(
-            itemTypeOI,
-            tokenOI,
-            identifierOrCriteriaOI,
-            startAmountOI,
-            endAmountOI
-        );
+        {
+            offer[0] = OfferItem(
+                itemTypeOI,
+                tokenOI,
+                identifierOrCriteriaOI,
+                startAmountOI,
+                endAmountOI
+            );
+        }
 
         ConsiderationItem[] memory consideration = new ConsiderationItem[](1);
-        consideration[0] = ConsiderationItem(
-            itemTypeCI,
-            tokenCI,
-            identifierOrCriteriaCI,
-            startAmountCI,
-            endAmountCI,
-            recipientCI
-        );
+        {
+            consideration[0] = ConsiderationItem(
+                itemTypeCI,
+                tokenCI,
+                identifierOrCriteriaCI,
+                startAmountCI,
+                endAmountCI,
+                recipientCI
+            );
+        }
 
         orders = new OrderComponents[](1);
         orders[0] = OrderComponents(

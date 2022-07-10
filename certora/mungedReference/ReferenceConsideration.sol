@@ -18,7 +18,7 @@ import {
     Fulfillment,
     FulfillmentComponent,
     Execution
-} from "contracts/lib/ConsiderationStructs.sol";
+} from "../../mungedAssembly/lib/ConsiderationStructs.sol";
 
 import { ReferenceOrderCombiner } from "./lib/ReferenceOrderCombiner.sol";
 

@@ -1,7 +1,9 @@
 import "erc20.spec"
 
-using DummyERC20A as ERCa
-using DummyERC20B as ERCb
+using DummyERC20A as ERC20a
+using DummyERC20B as ERC20b
+using DummyERC721A as ERC721a
+using DummyERC1155A as ERC1155a
 
 methods {
     // envfree methods
@@ -12,9 +14,10 @@ methods {
 
     // non-envfree methods
     updateChannel(address, bool)
-    // execute((uint8, address, address ,address ,uint256 ,uint256)[]) returns(bytes4)
-    execute(uint8, address ,address ,address ,uint256 ,uint256) returns(bytes4)
+    execute((uint8, address, address ,address ,uint256 ,uint256)[]) returns(bytes4)
+    // execute(uint8, address ,address ,address ,uint256 ,uint256) returns(bytes4)
 
+    safeTransferFrom(address, address, uint256, uint256, bytes) => DISPATCHER(true)
 }
 
 
@@ -115,12 +118,16 @@ rule basicFRule(env e, method f) {
     address token; address from; address to; address randomUser;
     uint256 identifier; uint256 amount;
 
-    uint256 balanceBefore = ERCa.balanceOf(e, randomUser);
+    require itemType == 1;
+    require token == ERC721a;
+    // require randomUser != from && randomUser != to;
+
+    uint256 balanceBefore = ERC20a.balanceOf(e, randomUser);
 
     // execute(e, conduitTransferStructCreator(itemType, token, from, to, identifier, amount));
     execute(e, itemType, token, from, to, identifier, amount);
 
-    uint256 balanceAfter = ERCa.balanceOf(e, randomUser);
+    uint256 balanceAfter = ERC20a.balanceOf(e, randomUser);
 
     assert balanceBefore == balanceAfter, "Remember, with great power comes great responsibility.";
 }

@@ -8,7 +8,7 @@ import {
     SignatureVerificationErrors
 } from "contracts/interfaces/SignatureVerificationErrors.sol";
 
-import "contracts/lib/ConsiderationConstants.sol";
+import "../../mungedAssembly/lib/ConsiderationConstants.sol";
 
 /**
  * @title SignatureVerification
